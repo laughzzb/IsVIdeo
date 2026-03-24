@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.is.feature_user.ui.resetpwd.ResetpwdViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.resetpwd.ResetpwdActivity">
+
+        <ImageView
+            android:id="@+id/iv_detail"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="2dp"
+            android:onClick="@{() ->viewModel.onFinishPage()}"
+            android:rotation="180"
+            android:src="@mipmap/ic_detail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="设置密码"
+            android:textColor="#ff444444"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="28dp"
+            android:text="手机号"
+            android:textColor="#ff444444"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_detail" />
+
+        <TextView
+            android:id="@+id/phoneEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="14dp"
+            android:background="@null"
+            android:inputType="phone"
+            android:text="@{viewModel.userMobile}"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_mobile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_mobile"
+            app:layout_constraintTop_toTopOf="@+id/tv_mobile" />
+
+        <TextView
+            android:id="@+id/tv_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="28dp"
+            android:text="验证码"
+            android:textColor="#ff444444"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mobile" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="14dp"
+            android:background="@null"
+            android:hint="验证码"
+            android:text="@={viewModel.code}"
+            android:maxLength="6"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_code"
+            app:layout_constraintEnd_toStartOf="@+id/tv_onclick_code"
+            app:layout_constraintStart_toEndOf="@+id/tv_code"
+            app:layout_constraintTop_toTopOf="@+id/tv_code" />
+
+        <TextView
+            android:id="@+id/tv_onclick_code"
+            android:layout_width="64dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_send_sms"
+            android:enabled="@{viewModel.isEnableSendCode}"
+            android:gravity="center"
+            android:onClick="@{()->viewModel.sendCode()}"
+            android:paddingBottom="3dp"
+            android:text="@{viewModel.getVerticalCodeText}"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_code"
+            tools:text="获取验证码" />
+
+        <TextView
+            android:id="@+id/tv_newpassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="新密码"
+            android:textColor="#ff444444"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_mobile"
+            app:layout_constraintTop_toBottomOf="@+id/tv_onclick_code" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="14dp"
+            android:background="@null"
+            android:hint="输入新密码"
+            android:inputType="numberPassword"
+            android:text="@={viewModel.password1}"
+            android:maxLength="11"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_newpassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_newpassword"
+            app:layout_constraintTop_toTopOf="@+id/tv_newpassword" />
+
+
+        <TextView
+            android:id="@+id/tv_confirm_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="确认密码"
+            android:textColor="#ff444444"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_mobile"
+            app:layout_constraintTop_toBottomOf="@+id/tv_newpassword" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="14dp"
+            android:background="@null"
+            android:hint="确认密码"
+            android:inputType="numberPassword"
+            android:text="@={viewModel.password2}"
+            android:maxLength="11"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_confirm_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_confirm_password"
+            app:layout_constraintTop_toTopOf="@+id/tv_confirm_password" />
+
+
+        <TextView
+            android:layout_width="340dp"
+            android:layout_height="55dp"
+            android:layout_marginBottom="52dp"
+            android:background="@drawable/bg_login_button"
+            android:enabled="@{viewModel.IsEnableLogin}"
+            android:gravity="center"
+            android:onClick="@{()->viewModel.resetPassword()}"
+            android:text="确  认"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

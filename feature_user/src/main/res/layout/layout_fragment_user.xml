@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.is.feature_user.ui.user.UserViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_install"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="14dp"
+            android:src="@mipmap/ic_install"
+            android:onClick="@{()->viewModel.SettingsPage()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ic_safe"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="12dp"
+            android:src="@mipmap/ic_safe"
+            app:layout_constraintEnd_toStartOf="@+id/iv_install"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            imageCircleUrl="@{viewModel.avater}"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="127dp"
+            android:onClick="@{()->viewModel.onEditUserINfoClick()}"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_head"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:onClick="@{()->viewModel.onEditUserINfoClick()}"
+            android:text="@{viewModel.nickName}"
+            android:textColor="#ff000000"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/iv_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/iv_avatar"
+            tools:text="请先登录" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginStart="12.5dp"
+            android:onClick="@{()->viewModel.onEditUserINfoClick()}"
+            android:src="@mipmap/ic_edit"
+            app:layout_constraintBottom_toBottomOf="@id/tv_name"
+            app:layout_constraintStart_toEndOf="@+id/tv_name"
+            app:layout_constraintTop_toTopOf="@id/tv_name" />
+
+        <TextView
+            android:id="@+id/tv_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="去编辑资料完善个人简介吧"
+            android:text="@{viewModel.bio}"
+            android:textColor="#ff9c9c9c"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+        <TextView
+            android:id="@+id/tv_fans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{viewModel.fans}"
+            android:textColor="#ff000000"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sign"
+            tools:text="0 粉丝" />
+
+        <TextView
+            android:id="@+id/tv_follow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:text="@{viewModel.follow}"
+            android:textColor="#ff000000"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_fans"
+            app:layout_constraintTop_toTopOf="@id/tv_fans"
+            tools:text="0 关注" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:text="@{viewModel.medel}"
+            android:textColor="#ff000000"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_follow"
+            app:layout_constraintTop_toTopOf="@id/tv_fans"
+            tools:text="0 徽章" />
+
+        <View
+            android:id="@+id/view_cut"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="36dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_fans" />
+
+        <LinearLayout
+            android:id="@+id/ll_collection"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center|start"
+            android:onClick="@{()->viewModel.onCollectClick()}"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/view_cut"
+            tools:layout_editor_absoluteX="0dp">
+
+            <ImageView
+                android:id="@+id/iv_collect"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/ic_collect" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="我的收藏"
+                android:textColor="#ff444444"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="235dp"
+                android:src="@mipmap/ic_detail" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_record"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:gravity="center|start"
+            android:onClick="@{()->viewModel.onRecordClick()}"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/ll_collection">
+
+            <ImageView
+                android:id="@+id/iv_record"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/ic_record" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="观影记录"
+                android:textColor="#ff444444"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="235dp"
+                android:src="@mipmap/ic_detail" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:gravity="center|start"
+            android:onClick="@{() -> viewModel.onLogoutClick()}"
+            android:orientation="horizontal"
+            android:visibility="@{viewModel.showLogoutBtn}"
+            app:layout_constraintTop_toBottomOf="@+id/ll_record">
+
+            <ImageView
+                android:id="@+id/iv_exit"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/ic_exit" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="退出登录"
+                android:textColor="#ff444444"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="235dp"
+                android:src="@mipmap/ic_detail" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

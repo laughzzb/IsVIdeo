@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.is.feature_user.ui.account.AccountViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.account.AccountActivity">
+
+
+        <ImageView
+            android:onClick="@{() ->viewModel.onFinishPage()}"
+            android:layout_marginStart="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="2dp"
+            android:rotation="180"
+            android:src="@mipmap/ic_detail"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="账号与绑定"
+            android:textColor="#ff444444"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <include
+            layout="@layout/item_settings_nomal"
+            android:layout_width="match_parent"
+            android:layout_height="46.5dp"
+            android:layout_marginTop="28dp"
+            android:onClick="@{()->viewModel.onAccountBindClick()}"
+            app:content="@{viewModel.mobile}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            app:title="@{`手机号`}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <!-- 背景（可选） -->
+    <item>
+        <shape android:shape="rectangle">
+            <size
+                android:width="12dp"
+                android:height="12dp"/>
+        </shape>
+    </item>
+
+    <!-- 居中显示图片 -->
+    <item
+        android:width="12dp"
+        android:height="12dp"
+        android:drawable="@drawable/icon_unselect"
+        android:gravity="center" />
+</layer-list>

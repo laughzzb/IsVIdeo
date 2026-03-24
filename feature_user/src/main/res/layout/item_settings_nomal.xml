@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="content"
+            type="String" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="46.5dp"
+        android:background="@color/white"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@{title}"
+            android:textColor="#ff444444"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_toStartOf="@+id/iv_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{content}"
+            android:layout_centerVertical="true"
+            android:textColor="#ff9c9c9c"
+            android:textSize="13sp" />
+        <ImageView
+
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:id="@+id/iv_detail"
+            android:src="@mipmap/ic_detail"/>
+
+    </RelativeLayout>
+</layout>

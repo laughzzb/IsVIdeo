@@ -1,0 +1,21 @@
+apply from:"../featureConfig.build.gradle"
+
+android {
+    namespace 'com.is.feature_find'
+    defaultConfig {
+        if (rootProject.ext.isModule) {
+            applicationId "com.is.feature_find"
+        }
+    }
+}
+
+    dependencies {
+
+
+        testImplementation libs.junit
+        androidTestImplementation libs.ext.junit
+        androidTestImplementation libs.espresso.core
+        annotationProcessor libs.arouterCompiler
+        implementation project(":library_base")
+        implementation project(":data_video")
+    }

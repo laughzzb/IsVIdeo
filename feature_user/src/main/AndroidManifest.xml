@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<uses-permission android:name="android.permission.CAMERA"/>
+<!-- 如果没有相机 -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false"/>
+    <queries>
+<!--     指定可以从相册选中照片-->
+        <intent>
+            <action android:name="android.intent.action.PICK"/>
+            <data android:mimeType="image/*"/>
+        </intent>
+<!-- 允许用户从任何支持图片选择的应用中选择内容（如文件管理器，相册等）-->
+        <intent>
+            <action android:name="android.intent.action.GET_CONTENT"/>
+            <data android:mimeType="image/*"/>
+        </intent>
+    </queries>
+    <application>
+        <activity android:name=".ui.camera.CameraActivity">
+
+        </activity>
+        <activity
+            android:name="com.is.mediaPlayer.ui.record.RecordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.collect.CollectActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.about.AboutMEActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.resetpwd.ResetpwdActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.pushsettings.PushSettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.playsettings.PlaySettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.permission.PermissionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.editinfo.EditInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.account.AccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Agreement.AgreementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:exported="true" />
+    </application>
+
+</manifest>

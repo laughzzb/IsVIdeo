@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.is.feature_user.ui.settings.SettingsViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.settings.SettingsActivity">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="2dp"
+            android:rotation="180"
+            android:src="@mipmap/ic_detail"
+            android:onClick="@{()->viewModel.onFinishPage()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="设置"
+            android:textColor="#ff444444"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--账号与绑定 -->
+                <include
+                    layout="@layout/item_settings_nomal"
+                    android:layout_width="match_parent"
+                    android:layout_height="46.5dp"
+                    android:onClick="@{()-> viewModel.onAccountBindClick()}"
+                    app:content="@{viewModel.mobile}"
+                    app:title="@{`账号与绑定`}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="9.5dp"
+                    android:background="#f8f8f8" />
+                <!--设置密码 -->
+                <include
+                    layout="@layout/item_settings_nomal"
+                    android:layout_width="match_parent"
+                    android:layout_height="46.5dp"
+                    android:onClick="@{()-> viewModel.onPasswordSettingClick()}"
+                    app:title="@{`设置密码`}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="9.5dp"
+                    android:background="#f8f8f8" />
+                <!--推送设置 -->
+                <include
+                    layout="@layout/item_settings_nomal"
+                    android:layout_width="match_parent"
+                    android:layout_height="46.5dp"
+                    android:onClick="@{()-> viewModel.onPushCLick()}"
+                    app:title="@{`推送设置`}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="9.5dp"
+                    android:background="#f8f8f8" />
+                <!--播放设置 -->
+                <include
+                    layout="@layout/item_settings_nomal"
+                    android:layout_width="match_parent"
+                    android:layout_height="46.5dp"
+                    android:onClick="@{()-> viewModel.onPlaySettingsCLick()}"
+                    app:title="@{`播放设置`}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="9.5dp"
+                    android:background="#f8f8f8" />
+                <!--清除缓存 -->
+                <include
+                    layout="@layout/item_settings_nomal"
+                    android:layout_width="match_parent"
+                    android:layout_height="46.5dp"
+                    android:onClick="@{()-> viewModel.onClearCacheClick()}"
+                    app:content="@{viewModel.cacheSize}"
+                    app:title="@{`清除缓存`}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="9.5dp"
+                    android:background="#f8f8f8" />
+                <!--用户协议-->
+                <include
+                    layout="@layout/item_settings_nomal"
+                    android:layout_width="match_parent"
+                    android:layout_height="46.5dp"
+                    android:onClick="@{()-> viewModel.onUserAgreementClick()}"
+                    app:title="@{`用户协议`}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="9.5dp"
+                    android:background="#f8f8f8" />
+                <!--隐私政策概要-->
+                <include
+                    layout="@layout/item_settings_nomal"
+                    android:layout_width="match_parent"
+                    android:layout_height="46.5dp"
+                    android:onClick="@{()-> viewModel.onSimplePrivacyPolicyClick()}"
+                    app:title="@{`隐私政策概要`}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="9.5dp"
+                    android:background="#f8f8f8" />
+
+                <include
+                    layout="@layout/item_settings_nomal"
+                    android:layout_width="match_parent"
+                    android:layout_height="46.5dp"
+                    android:onClick="@{()-> viewModel.onPrivacyPolicyClick()}"
+                    app:title="@{`隐私政策`}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="9.5dp"
+                    android:background="#f8f8f8" />
+
+                <include
+                    layout="@layout/item_settings_nomal"
+                    android:layout_width="match_parent"
+                    android:layout_height="46.5dp"
+                    android:onClick="@{()-> viewModel.onPermissionSettingsClick()}"
+                    app:title="@{`隐私权限设置`}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="9.5dp"
+                    android:background="#f8f8f8" />
+                <!--个人信息收集清单 -->
+                <include
+                    layout="@layout/item_settings_nomal"
+                    android:layout_width="match_parent"
+                    android:layout_height="46.5dp"
+                    android:onClick="@{()->viewModel.onUserInfoMenusClick()}"
+                    app:title="@{`个人信息收集清单`}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="9.5dp"
+                    android:background="#f8f8f8" />
+
+                <!--关于我们-->
+                <include
+                    layout="@layout/item_settings_nomal"
+                    android:layout_width="match_parent"
+                    android:layout_height="46.5dp"
+                    android:onClick="@{()-> viewModel.onAboutUsClick()}"
+                    app:title="@{`关于我们`}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="9.5dp"
+                    android:background="#f8f8f8" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="46.5dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:onClick="@{()->viewModel.onLogoutClick()}"
+                    android:text="退出登录"
+                    android:textColor="#FF4444"
+                    android:textSize="16sp"
+                    android:visibility="@{viewModel.exitLoginBtnVisibility}"/>
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.is.mediaPlayer.ui.videodetail.VideoDetailViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        tools:context=".ui.videodetail.VideoDetailActivity">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nsl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:onClick="@{()->viewModel.onFinishPage()}"
+                    android:id="@+id/iv_back"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="2dp"
+                    android:rotation="180"
+                    android:src="@mipmap/ic_detail"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_avatar"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="14dp"
+                    android:rotation="180"
+                    imageCircleUrl="@{viewModel.videoInfo.user.avatar}"
+                    app:layout_constraintStart_toEndOf="@+id/iv_back"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
+                    app:layout_constraintStart_toEndOf="@+id/iv_avatar"
+                    app:layout_constraintTop_toTopOf="@+id/iv_avatar"
+                    android:textColor="#ffff"
+                    android:text="@{viewModel.videoInfo.user.nickname}"
+                    tools:text="nickName" />
+
+                <androidx.media3.ui.PlayerView
+                    android:id="@+id/player_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="198dp"
+                    android:layout_marginTop="12dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_avatar" />
+
+                <com.zhengsr.tablib.view.flow.TabVpFlowLayout
+                    android:id="@+id/tab_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/player_view"
+                    app:tab_color="#FFFFFFFF"
+                    app:tab_height="1dp"
+                    app:tab_margin_l="40dp"
+                    app:tab_orientation="horizontal"
+                    app:tab_text_select_color="#FFFFFFFF"
+                    app:tab_text_unselect_color="#FFFFFFFF"
+                    app:tab_type="rect" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tab_layout" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

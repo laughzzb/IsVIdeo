@@ -1,0 +1,1 @@
+ -keep class com.is.data_video.bean.**{*;}

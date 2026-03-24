@@ -1,0 +1,62 @@
+plugins {
+    alias(libs.plugins.android.library)
+}
+
+android {
+    namespace 'com.is.librumeng'
+    compileSdk rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+     minSdk rootProject.ext.minSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+}
+
+dependencies {
+    implementation libs.appcompat
+    implementation libs.material
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+
+    //友盟基础组件库
+    api 'com.umeng.umsdk:common:+'// (必选)版本号
+    api 'com.umeng.umsdk:asms:+'// asms包依赖(必选)
+
+    //友盟分享核心组件
+    api 'com.umeng.umsdk:share-core:+'
+    //友盟分享依赖v4包
+    api 'com.android.support:support-v4:25.0.0'
+
+    //push依赖
+    api 'com.umeng.umsdk:push:+'
+
+    //微信
+    api 'com.tencent.mm.opensdk:wechat-sdk-android:6.8.24'
+    api 'com.umeng.umsdk:share-wx:+'
+
+//    //QQ
+//    implementation files('libs/open_sdk_3.5.16.4_r8c01346_lite.jar')
+//    implementation 'com.umeng.umsdk:share-qq:+'
+//
+//    //支付宝
+//    implementation 'com.umeng.umsdk:share-alipay:+'
+//
+//    //抖音
+//    implementation 'com.bytedance.ies.ugc.aweme:opensdk-china-external:0.1.9.0'
+//    implementation 'com.bytedance.ies.ugc.aweme:opensdk-common:0.1.9.0'
+//    implementation files('libs/umeng-share-bytedance-7.3.4.jar')
+}

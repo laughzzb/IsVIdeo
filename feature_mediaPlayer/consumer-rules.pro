@@ -1,0 +1,2 @@
+ -keep class com.is.mediaPlayer.ui.categorylist.CategoryListFragment
+ -keep class com.is.mediaPlayer.ui.videolist.VideoListFragment

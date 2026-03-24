@@ -1,0 +1,153 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'com.is.video'
+    compileSdk rootProject.ext.compileSdkVersion
+
+
+    defaultConfig {
+        applicationId "com.is.video"
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+                ndk {
+                    // 指定支持的ABI架构
+                    //方案1.对主流的架构做支持
+                    abiFilters 'arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64'
+//                    //方案2.精简配置
+//                    abiFilters 'arm64-v8a', 'armeabi-v7a' // 覆盖99%设备
+//                    //方案3.如果明确知道自己设备的架构，可以只指定1种
+//                    abiFilters 'x86_64'
+                }
+
+
+
+    }
+    // 签名配置（建议将敏感信息放在 gradle.properties）
+
+
+    //重命名APK文件：将默认的app-debug.apk或app-release.apk等文件名
+//按照如下格式输出apk名称：  lsvideo-变体名称-版本号.apk
+//比如  lsvideo-release-2.0.apk
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "Isvideo-${variant.name}-${variant.versionName}.apk"
+        }
+    }
+    signingConfigs {
+        //debug一般指本地调试、测试
+        debug {
+            storeFile file("../isVideo.jks")
+            storePassword KEYSTORE_PASSWORD
+            keyAlias "IsVideo"
+            keyPassword KEY_PASSWORD
+        }
+        //release指的是正式的
+        release {
+            storeFile file("../isVideo.jks")
+            storePassword KEYSTORE_PASSWORD
+            keyAlias "IsVideo"
+            keyPassword KEY_PASSWORD
+
+        }
+
+        //在公司层面提起测试的时候用staging，但对于多数团队来说，debug就够了。如果比较讲究，也可以区分staging
+        staging {
+            storeFile file("../isVideo.jks")
+            storePassword KEYSTORE_PASSWORD
+            keyAlias "IsVideo"
+            keyPassword KEY_PASSWORD
+        }
+    }
+
+    buildTypes {
+        //指定正式环境关联的签名配置
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true   // 启用混淆
+            shrinkResources true // 移除无用资源文件（这个如果为true那么minifyEnabled也必须为true，否则会出错）
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//指定模块根目录下的混淆文件
+        }
+        //指定debug测试环境关联的签名配置
+        debug {
+            signingConfig signingConfigs.debug
+            debuggable true//说明是测试
+        }
+
+        //指定staging测试环境关联的签名配置
+        staging {
+            signingConfig signingConfigs.staging
+            debuggable true//说明是测试
+        }
+
+    }
+    // 解决方案：添加 packagingOptions 块，排除冲突的 META-INF 文件
+    packagingOptions {
+        resources {
+            // 排除所有依赖库中 META-INF/ 目录下的指定文件
+            excludes += [
+                    'META-INF/DEPENDENCIES',
+                    'META-INF/NOTICE',
+                    'META-INF/LICENSE',
+                    'META-INF/LICENSE.txt',
+                    'META-INF/NOTICE.txt',
+                    'META-INF/ASL2.0',
+                    'META-INF/*.kotlin_module'
+            ]
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+
+    annotationProcessor libs.arouterCompiler
+
+        // ... 其他依赖
+
+        // ✅ 添加 Google HTTP Client
+        implementation 'com.google.http-client:google-http-client:1.42.3'
+        implementation 'com.google.http-client:google-http-client-android:1.42.3'
+
+        // ✅ 添加 Joda-Time
+        implementation 'joda-time:joda-time:2.12.5'
+
+        // ✅ 确保有 Tink 库
+        implementation 'com.google.crypto.tink:tink-android:1.8.0'
+
+    if (rootProject.ext.isModule) {
+        implementation project(":library_base")
+
+    } else {
+        //被集成
+        implementation project(":library_base")
+        implementation project(":feature_home")
+        implementation project(":feature_piaza")
+        implementation project(":feature_user")
+        implementation project(":feature_find")
+        implementation project(":feature_mediaPlayer")
+    }
+
+        debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
+
+}

@@ -1,0 +1,17 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+}
+
+ext{
+    isModule =false;//是否可以单独运行
+
+    compileSdkVersion = 36
+    minSdkVersion = 26
+    targetSdkVersion =  36
+    versionCode  =202503161
+    versionName  ="2.0"
+
+
+}

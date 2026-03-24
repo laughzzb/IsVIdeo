@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 第一层：图片，fill 填充覆盖角 -->
+    <item
+        android:bottom="-10dp"
+        android:left="-10dp"
+        android:right="-10dp"
+        android:top="-10dp">  <!-- inset 扩展覆盖角 -->
+        <bitmap
+            android:gravity="center"
+            android:src="@mipmap/ic_head" />  <!-- centerCrop 裁剪填充 -->
+    </item>
+
+    <!-- 第二层：圆形遮罩 -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#00000000" />
+            <stroke
+                android:width="2dp"
+                android:color="#FFFFFF" />  <!-- 边框 -->
+            <size
+                android:width="80dp"
+                android:height="80dp" />
+        </shape>
+    </item>
+
+</layer-list>

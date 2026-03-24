@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.is.feature_piaza.bean.ResPlaza.PlazaDetail" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingTop="21.5dp">
+
+        <ImageView
+            imageUrl="@{data.cover}"
+            android:id="@+id/iv_cover"
+            android:layout_width="173dp"
+            android:layout_height="173dp"
+            android:scaleType="center"
+            android:src="@mipmap/ic_cat"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:text="@{data.title}"
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            tools:text="埋头吃饭的狸花"
+            app:layout_constraintStart_toStartOf="@+id/iv_cover"
+            app:layout_constraintTop_toBottomOf="@+id/iv_cover" />
+
+        <ImageView
+            imageUrl="@{data.avatar}"
+            android:id="@+id/iv_avatar"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginTop="15.5dp"
+            android:src="@mipmap/icon_avatar"
+            app:layout_constraintStart_toStartOf="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="@{data.author}"
+            android:layout_height="wrap_content"
+            tools:text="山上娃娃"
+            android:layout_marginStart="4dp"
+            app:layout_constraintStart_toEndOf="@+id/iv_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            android:layout_marginTop="10.5dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
