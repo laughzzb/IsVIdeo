@@ -1,15 +1,13 @@
 # IsVIdeo
 # IsVideo - 短视频社交应用（Android Java）
 
-[![GitHub stars](https://img.shields.io/github/stars/你的用户名/IsVideo)](https://github.com/你的用户名/IsVideo)
+[![GitHub stars](https://img.shields.io/github/stars/你的用户名/IsVideo)](https://github.com/laughzzb/IsVideo)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 一个采用**MVVM + 组件化**架构开发的短视频社交App，支持视频自动播放、点赞评论实时更新、模块间通信等完整功能。  
-**独立开发项目**，2025.12 – 2026.01 完成，APK体积优化至 **8MB以内**，滑动帧率稳定 **60fps**。
+**独立开发项目**，2025.12 – 2026.01 完成，APK体积优化至 **15MB以内**，滑动帧率稳定 **60fps**。
 
-**项目地址**：https://github.com/你的用户名/IsVideo  
-**APK 下载**（可选）：（把打包好的apk上传到release里，方便HR直接下载）
-
+**项目地址**：https://github.com/laughzzb/IsVideo  
 ---
 
 ## 🎯 项目亮点
@@ -57,7 +55,7 @@
 - **Token 失效处理** → Retrofit 拦截器自动刷新 + 错误基类统一处理
 - **Android 10+ 媒体权限** → MediaStore + 动态权限申请 + ContentResolver 封装
 - **内存泄漏** → LeakCanary 全量检测 + ViewModel + Lifecycle 严格管理
-- **APK 体积过大** → WebP 压缩 + 资源删除 + ProGuard 规则优化（最终 8MB）
+- **APK 体积过大** → WebP 压缩 + 资源删除 + ProGuard 规则优化（最终 15MB）
 
 ---
 
