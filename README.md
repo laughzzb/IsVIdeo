@@ -4,6 +4,15 @@
 
 **独立开发项目**，2025.12 – 2026.01 完成。APK 体积优化至 **15MB**，滑动帧率稳定 **60fps**。
 
+## 应用截图 
+
+<p align="center">
+  <img src="home.png" width="30%" alt="首页视频流 - 垂直滑动自动播放" />
+  <img src="plaza.png" width="30%" alt=""广场页  -横向排布   />
+  <img src="find.png" width="30%" alt="发现页   - 顶部搜索" />
+  <img src="user.png" width="30%" alt="个人中心页 - 登录及设置" />
+  <img src="video.png" width="30%" alt=“视频详情页 - 视频播放，点赞收藏评论等" />
+</p>
 
 
 ## 项目地址
