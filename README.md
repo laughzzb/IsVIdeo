@@ -62,4 +62,4 @@
 ## 🚀 如何运行
 1. Clone 项目
    ```bash
-   git clone https://github.com/你的用户名/IsVideo.git
+   git clone https://github.com/laguhzzb/IsVideo.git
