@@ -21,7 +21,7 @@
   - SmartRefreshLayout 实现下拉刷新 / 上拉加载
   - LeakCanary 检测并修复多处内存泄漏
   - ViewModel + Lifecycle 严格管理生命周期
-- **体积优化**：图片压缩、资源瘦身、ProGuard 混淆，最终安装包仅 **8MB**
+- **体积优化**：图片压缩、资源瘦身、ProGuard 混淆，最终安装包仅 **15MB**
 
 ---
 
@@ -43,7 +43,7 @@
 ## 📱 核心功能实现
 
 1. **首页视频流**：RecyclerView + 预加载 + 自动播放/暂停（滑动时精准控制）
-2. **视频详情页**：手势控制（双击点赞、滑动进度、上下滑动切换视频）
+2. **视频详情页**：实时更点赞，收藏，评论的状态
 3. **点赞/评论实时更新**：LiveData 驱动 DataBinding，数据变化 UI 自动刷新
 4. **视频上传成功后刷新**：EventBus 跨模块消息传递
 5. **本地媒体文件读取**：兼容 Android 10+，封装 `MediaUtils` 工具类
@@ -56,7 +56,7 @@
 - **Token 失效处理** → Retrofit 拦截器自动刷新 + 错误基类统一处理
 - **Android 10+ 媒体权限** → MediaStore + 动态权限申请 + ContentResolver 封装
 - **内存泄漏** → LeakCanary 全量检测 + ViewModel + Lifecycle 严格管理
-- **APK 体积过大** → WebP 压缩 + 资源删除 + ProGuard 规则优化（最终 8MB）
+- **APK 体积过大** → WebP 压缩 + 资源删除 + ProGuard 规则优化（最终 15MB）
 
 ---
 
